@@ -1,8 +1,30 @@
+/**                           _ooOoo_
+ *                           o8888888o
+ *                           88" . "88
+ *                           (| -_- |)
+ *                            O\ = /O
+ *                        ____/`---'\____
+ *                      .   ' \\| |// `.
+ *                       / \\||| : |||// \
+ *                     / _||||| -:- |||||- \
+ *                       | | \\\ - /// | |
+ *                     | \_| ''\---/'' | |
+ *                      \ .-\__ `-` ___/-. /
+ *                   ___`. .' /--.--\ `. . __
+ *                ."" '< `.___\_<|>_/___.' >'"".
+ *               | | : `- \`.;`\ _ /`;.`/ - ` : | |
+ *                 \ \ `-. \_ __\ /__ _/ .-` / /
+ *         ======`-.____`-.___\_____/___.-`____.-'======
+ *                            `=---='
+ *
+ *         .............................................
+ *                  佛祖保佑             永无BUG
+ */
+
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long long
-const int NOT_EXIST=2000000000;
-
+const int NOT_EXIST=0x3f3f3f3f;
 const int maxn=2e5+5;
 struct node_info{
     int val;
@@ -154,8 +176,8 @@ int query_id(int u,int x,int lc,int rc){
     }
     push_down(u);
     int mid=lc+rc>>1;
-    if(x<=mid) return query(ls,x,lc,mid);
-    if(x>=mid+1) return query(ls,x,mid+1,rc);
+    if(x<=mid) return query_id(ls,x,lc,mid);
+    if(x>=mid+1) return query_id(ls,x,mid+1,rc);
 }
 
 
