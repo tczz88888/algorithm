@@ -33,10 +33,8 @@ int main(){
         for(int j=1;j<=n;j++){
             if(ct[i][j]==1) ++tot;
         }
-       // cout<<tot<<' ';
         if(tot==n-1) ++ans;
     }
-    //cout<<endl;
     cout<<ans<<endl;
     return 0;
 }

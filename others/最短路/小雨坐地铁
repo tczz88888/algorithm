@@ -1,0 +1,59 @@
+#include<bits/stdc++.h>
+using namespace std;
+const int maxn=4e5+5;
+#define ll long long
+struct node{
+    int u;
+    int d;
+    bool operator <(const node &p) const{
+        return d>p.d;
+    }
+};
+int dis[maxn];
+int v1[maxn],v2[maxn];
+vector<pair<int,int>>g[maxn];
+
+
+int dj(int s,int e){
+    priority_queue<node>q;
+    q.push({s,0});
+    memset(dis,0x3f,sizeof(dis));
+    dis[s]=0;
+    while(!q.empty()){
+        node nw=q.top();
+        q.pop();
+        int u=nw.u;
+        if(nw.d!=dis[u]) continue;
+        for(auto [v,w]:g[u]){
+            if(dis[u]+w<dis[v]){
+                dis[v]=dis[u]+w;
+                q.push({v,dis[v]});
+            }
+        }
+    }
+    return dis[e];
+}
+
+int main(){
+    int n,m,s,t;
+    cin>>n>>m>>s>>t;
+    for(int i=1;i<=m;i++){
+        int a,b,c;
+        cin>>a>>b>>c;
+        //建分层图,每层n个点，共m+1层，m+1层是个虚层，和所有层连接
+        int pre=-1;
+        for(int j=1;j<=c;j++){
+            int x;
+            cin>>x;
+            g[n*(i-1)+x].push_back({n*m+x,0});
+            g[n*m+x].push_back({n*(i-1)+x,a});
+            if(pre!=-1){
+                g[n*(i-1)+x].push_back({n*(i-1)+pre,0});
+                g[n*(i-1)+pre].push_back({n*(i-1)+x,0});
+            }
+            pre=x;
+        }
+    }
+    cout<<dj(n*m+s,n*m+t)<<endl;
+    return 0;
+}

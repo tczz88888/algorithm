@@ -195,7 +195,7 @@ pair<int,int> query(int u,int x,int lc,int rc){
 
 
 void op_write(int id,int l,int r,int x){
-
+    int lim= 
 }
 
 void op_earse(){
