@@ -1,3 +1,4 @@
+//每个点dfs一遍就完了
 #include<bits/stdc++.h>
 using namespace std;
 const int maxn=1e3+5;
@@ -33,7 +34,6 @@ int main(){
         for(int j=1;j<=n;j++){
             if(ct[i][j]==1) ++tot;
         }
-       // cout<<tot<<' ';
         if(tot==n-1) ++ans;
     }
     //cout<<endl;
